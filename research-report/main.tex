@@ -43,6 +43,8 @@ A VLA policy maps observations $o$, language instruction $\ell$, and often robot
 \end{equation}
 The vision encoder extracts visual information, the multimodal backbone combines it with language, and an action component produces motor commands. Autoregressive policies predict action tokens. Regression heads predict continuous chunks directly. Flow-matching heads learn a velocity field that transforms noise into actions through an integration process. These output parameterizations change the available losses and the meaning of a response-preservation constraint.
 
+Architecture determines the object and cost of a preservation constraint. Autoregressive policies expose action-token distributions, regression heads expose continuous chunks, and flow heads predict a velocity field along a noisy action trajectory. XIA therefore matches architecture-specific teacher and student responses under identical conditioning, including flow velocities. ConSFT instead scales the supervised flow-matching update without an additional reference network. Info-VLA freezes the visual--language encoder while updating action-side components, so unchanged encoder weights alone do not establish preserved downstream control. These distinctions locate the preservation constraint; they do not demonstrate that one output architecture inherently forgets less \cite{xia,consft,info}.
+
 In sequential learning, task datasets $D_1,\ldots,D_K$ arrive over time. At stage $k$, the full history may be unavailable. Ordinary supervised fine-tuning minimizes the new-task loss. Experience replay (ER) adds a retained subset $B_{k-1}$ of earlier demonstrations:
 \begin{equation}
 \mathcal L_k=\mathbb E_{D_k}[\ell_{\rm BC}]+\lambda\mathbb E_{B_{k-1}}[\ell_{\rm BC}].
@@ -119,7 +121,7 @@ XIA addresses a different coverage gap \cite{xia}. Reweighting a fixed replay se
 \begin{equation}
 \mathcal L_{\rm XIA}=\mathcal L_{\rm ER}+\alpha\mathbb E\!\left[d\left(r_\theta(q,\ell^-),\operatorname{sg}[r_{\theta^-}(q,\ell^-)]\right)\right].
 \end{equation}
-The target comes from the teacher; it is not the new-task expert action relabeled as an old skill. XIA reports OpenVLA-OFT average final success across three LIBERO suites of 72.5\% with ER versus 92.6\% with anchoring. The method uses the same retained expert-frame budget but adds teacher computation and temporary anchor data. A teacher response need not be correct, and an old instruction may be infeasible in a new observation. Response preservation therefore has a useful but conditional role.
+Here $q$ is the response query: an observation for direct action prediction, or the observation, noisy action chunk and flow time for a flow policy. The symbols $\ell^-$, $r$, $d$ and $\alpha$ denote an earlier instruction, policy response, response discrepancy and constraint weight; $\theta^-$ is the frozen previous policy and $\operatorname{sg}$ stops teacher gradients. The target comes from the teacher; it is not the new-task expert action relabeled as an old skill. XIA reports OpenVLA-OFT average final success across three LIBERO suites of 72.5\% with ER versus 92.6\% with anchoring. The method uses the same retained expert-frame budget but adds teacher computation and temporary anchor data. A teacher response need not be correct, and an old instruction may be infeasible in a new observation. Response preservation therefore has a useful but conditional role.
 
 \subsection{Constrain the update without storing old demonstrations}
 ConSFT weights the per-sample supervised loss using a detached exponential factor \cite{consft}:
