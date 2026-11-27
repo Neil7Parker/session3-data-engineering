@@ -68,7 +68,7 @@ Softmax scores are not calibrated confidence estimates. Short texts, sarcasm and
 """
     (folder / "README.md").write_text(card, encoding="utf-8")
     api = HfApi(token=token)
-    api.create_repo(repo_id=repo_id, repo_type="model", exist_ok=True)
+    api.repo_info(repo_id=repo_id, repo_type="model")
     api.upload_folder(repo_id=repo_id, repo_type="model", folder_path=str(folder),
                       allow_patterns=["model.pt", "vectorizer.pkl", "config.json", "metrics.json", "README.md"],
                       commit_message=f"Train from {config['source_commit'][:12]}")
