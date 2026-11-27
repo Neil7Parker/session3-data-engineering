@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "verification": "fresh-process loading; no training performed by this script",
+  "data": "synthetic study-hours data from the course example; not real student records",
+  "python": "3.12.7",
+  "scikit_learn": "1.5.1",
+  "original_grade_count": 5,
+  "updated_grade_count": 8,
+  "original_average": 87.0,
+  "updated_average": 86.875,
+  "coefficient": 1.709775214231414,
+  "intercept": 52.43508117527469,
+  "hours": [
+    5.0,
+    10.0,
+    15.0,
+    17.5,
+    20.0
+  ],
+  "predicted_scores": [
+    60.98395724643176,
+    69.53283331758882,
+    78.0817093887459,
+    82.35614742432443,
+    86.63058545990296
+  ],
+  "pickle_joblib_predictions_equal": true
+}

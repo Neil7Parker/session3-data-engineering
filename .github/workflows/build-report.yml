@@ -1,0 +1,46 @@
+name: Build Independent English and Chinese Reports
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - 'research-report/**'
+      - '.github/workflows/build-report.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  latex:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - language: English
+            source: main.tex
+            pdf: main.pdf
+          - language: Chinese
+            source: main-zh.tex
+            pdf: main-zh.pdf
+    steps:
+      - uses: actions/checkout@v7
+      - uses: WtfJoke/setup-tectonic@v4
+      - name: Compile the independent report
+        working-directory: research-report
+        env:
+          SOURCE_FILE: ${{ matrix.source }}
+        run: |
+          tectonic --version > build-tool.txt
+          tectonic --untrusted --keep-logs "$SOURCE_FILE"
+      - name: Save compiled PDF and build provenance
+        uses: actions/upload-artifact@v7
+        with:
+          name: Research-Report-${{ matrix.language }}
+          path: |
+            research-report/${{ matrix.pdf }}
+            research-report/build-tool.txt
+          if-no-files-found: error
+          retention-days: 30

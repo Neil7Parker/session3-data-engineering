@@ -1,0 +1,38 @@
+\appendix
+\section{Corpus dates, inspected versions, and publication status}
+\label{app:corpus}
+The inclusion date is the first public arXiv submission, not the date of a later revision. All ten studies were first posted after 31 January 2026. Dates and version numbers below were checked against the official arXiv records on 27 November 2026. The analysis cites the inspected versions. Conference association and the edition inspected are recorded separately; a later acceptance does not establish that the inspected preprint is identical to its camera-ready edition.
+
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{longtable}{@{}p{24mm}p{24mm}p{22mm}p{22mm}p{46mm}@{}}
+\caption{Publication-date screening and source status.}\label{tab:corpus}\\
+\toprule
+Study & arXiv ID & First posted & Inspected revision & Publication evidence\\
+\midrule
+\endfirsthead
+\toprule
+Study & arXiv ID & First posted & Inspected revision & Publication evidence\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+Liu et al.\ \cite{liu_er} & 2603.03818 & 4 Mar 2026 & v2, 17 Mar 2026 & ICML 2026 proceedings independently verified; analysis uses arXiv v2.\\
+Hu et al.\ \cite{hu_rl} & 2603.11653 & 12 Mar 2026 & v3, 11 Jul 2026 & Official arXiv comments report acceptance at RLC 2026.\\
+Zhu et al.\ \cite{zhu_real} & 2605.26820 & 26 May 2026 & v3, 8 Aug 2026 & arXiv preprint; no venue acceptance established in this review.\\
+ConSFT\ \cite{consft} & 2605.08879 & 9 May 2026 & v2, 19 May 2026 & arXiv preprint; no venue acceptance established in this review.\\
+PHASER\ \cite{phaser} & 2606.03598 & 2 Jun 2026 & v2, 3 Jun 2026 & arXiv preprint; no venue acceptance established in this review.\\
+XIA\ \cite{xia} & 2611.31903 & 24 Nov 2026 & v1, 24 Nov 2026 & arXiv preprint, three days old at the review cutoff.\\
+OOD analysis\ \cite{ood} & 2611.31511 & 23 Nov 2026 & v1, 23 Nov 2026 & Official arXiv comments report CoRL 2026 Learn@Deploy workshop presentation; this is not a main-conference proceedings claim.\\
+RECALL\ \cite{recall} & 2606.23617 & 22 Jun 2026 & v1, 22 Jun 2026 & arXiv preprint; no acceptance established from the inspected record.\\
+Info-VLA\ \cite{info} & 2603.13335 & 6 Mar 2026 & v1, 6 Mar 2026 & Authors' institutional publication list reports CoRL 2026; analysis uses the March preprint.\\
+LifeLong-RFT\ \cite{lifelong} & 2602.10503 & 11 Feb 2026 & v2, 16 May 2026 & Authors' project cites an arXiv preprint; no venue acceptance established here.\\
+\end{longtable}
+\endgroup
+
+The ICML proceedings record is available at \url{https://proceedings.mlr.press/v306/liu26bu.html}. Info-VLA's conference association is listed in the authors' institutional publication list at \url{https://milab.westlake.edu.cn/publications.html}. Other status statements refer to the corresponding official arXiv records linked in the references. ``No acceptance established'' describes this review's verification scope, not evidence that a paper was rejected or never peer reviewed.
+
+Quality assessment therefore relies on the directness of the protocol, relevant baselines, ablations, uncertainty reporting, and reproducibility details as well as publication status. The six studies listed solely as preprints are not represented as six independently peer-reviewed publications. The two November papers provide timely, directly relevant observations but have had little time for independent scrutiny.
+
+The preferred 30B model limit is supported for the principal familiar VLA families at the approximate level discussed in the main text. A verified exact total for NORA-Long was not obtained. Backbone parameter counts and trainable-parameter counts are not interchangeable with the total deployed policy size; auxiliary teacher, phase-segmentation, and help-prediction components also affect practical cost.

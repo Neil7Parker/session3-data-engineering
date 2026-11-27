@@ -1,0 +1,36 @@
+Data saved successfully!
+Loaded fruits: ['apple', 'banana', 'mango', 'strawberry']
+Loaded scores: {'Alice': 92, 'Bob': 85, 'Charlie': 78, 'Diana': 95}
+Loaded complex data: {'fruits': ['apple', 'banana', 'mango', 'strawberry'], 'scores': {'Alice': 92, 'Bob': 85, 'Charlie': 78, 'Diana': 95}, 'metrics': [1.2, 3.4, 5.6, 7.8], 'active': True}
+GradeTracker for 'Introduction to Machine Learning' with 5 students
+Class average: 87.0
+Top student: Alice with grade 95
+
+Grade data for 'Introduction to Machine Learning' saved successfully!
+GradeTracker for 'Introduction to Machine Learning' with 5 students
+Last updated: 2026-11-27 08:47:00.301307
+Current class average: 87.0
+
+Updated class average with 8 students: 86.9
+New top student: Alice with grade 95
+Model trained!
+Coefficient: 1.71 (score points per study hour)
+Intercept: 52.44 (base score)
+Mean Squared Error: 16.79
+R² Score: 0.89
+Model saved successfully!
+Study Hours | Predicted Score
+------------------------------
+        5.0 | 61.0
+       10.0 | 69.5
+       15.0 | 78.1
+       20.0 | 86.6
+
+Prediction function test:
+If a student studies for 12.5 hours, predicted score: 73.8
+If a student studies for 7.8 hours, predicted score: 65.8
+If a student studies for 22 hours, predicted score: 90.1
+Model saved using joblib!
+Prediction using pickle-loaded model: 82.4
+Prediction using joblib-loaded model: 82.4
+Same prediction: True
