@@ -2,6 +2,12 @@
 
 This coursework project implements Option A: TF-IDF review features followed by a feedforward PyTorch neural network. A push to `main` or `master` trains, evaluates and publishes the model bundle to Hugging Face automatically.
 
+## Verified result
+
+[GitHub Actions run 45924877833](https://github.com/Neil7Parker/session3-data-engineering/actions/runs/45924877833) completed training, reload/inference verification and automatic publication successfully. The held-out test set contained 100 reviews (50 negative, 50 positive): accuracy **0.8400**, macro-F1 **0.8394**, confusion matrix `[[39, 11], [5, 45]]` (true labels by row; negative, positive). The selected checkpoint was epoch 6, with validation macro-F1 0.8600. Train / validation / test sizes were 299 / 100 / 100 after deduplication.
+
+The [Hugging Face repository](https://huggingface.co/Li7HaoRan/imdb-sentiment-mlp/tree/main) contains all four required artifacts and the generated model card. Its configuration records the current source commit and dependency versions. This small-sample result does not establish cross-domain robustness.
+
 ## Project structure
 
 ```text
